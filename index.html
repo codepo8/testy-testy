@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<title>Makey Makey Test Page</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-	<style>
+<style>
 html, body {
   font-family: 'Open Sans', sans-serif;
   height: 100%;
   background: #DFDFB2;
   color: #553C08;
   overflow: hidden;
-}
+} 
 .reactors {
   font-size: 200px;
   opacity: 0;
@@ -31,7 +31,8 @@ html, body {
 }
 .current {
   opacity: 1;
-}	</style>
+}
+</style>
 </head>
 <body>
 	<!-- 
@@ -64,8 +65,32 @@ html, body {
 		<p>Space</p>		
 	</section>
 
+	<section id="w" class="reactors">
+		<p>w</p>		
+	</section> 
+
+	<section id="a" class="reactors">
+		<p>a</p>		
+	</section>
+
+	<section id="s" class="reactors">
+		<p>s</p>		
+	</section>
+
+	<section id="d" class="reactors">
+		<p>d</p>		
+	</section>
+
+	<section id="f" class="reactors">
+		<p>f</p>		
+	</section>
+
+	<section id="g" class="reactors">
+		<p>g</p>		
+	</section>
+
 <script>
-  (function(){
+(function(){
   var body     = document,
       reactors = document.querySelector('.reactors'),
       left     = document.querySelector('#left'),
@@ -84,7 +109,7 @@ html, body {
       case 39: // right
         setcurrent(right);
       break;
-      case 37: // left 
+      case 37: // left
         setcurrent(left);
       break;
       case 38: // up
@@ -92,6 +117,27 @@ html, body {
       break;
       case 40: // down
         setcurrent(down);
+      break;
+      case 40: // down
+        setcurrent(down);
+      break;
+      case 87: // w
+        setcurrent(w);
+      break;
+      case 65: // a
+        setcurrent(a);
+      break;
+      case 83: // s
+        setcurrent(s);
+      break;
+      case 68: // d
+        setcurrent(d);
+      break;
+      case 70: // f
+        setcurrent(f);
+      break;
+      case 71: // g
+        setcurrent(g);
       break;
     }
   }, false);
