@@ -17,7 +17,7 @@
       case 39: // right
         setcurrent(right);
       break;
-      case 37: // left 
+      case 37: // left
         setcurrent(left);
       break;
       case 38: // up
@@ -25,6 +25,27 @@
       break;
       case 40: // down
         setcurrent(down);
+      break;
+      case 40: // down
+        setcurrent(down);
+      break;
+      case 87: // w
+        setcurrent(w);
+      break;
+      case 65: // a
+        setcurrent(a);
+      break;
+      case 83: // s
+        setcurrent(s);
+      break;
+      case 68: // d
+        setcurrent(d);
+      break;
+      case 70: // f
+        setcurrent(f);
+      break;
+      case 71: // g
+        setcurrent(g);
       break;
     }
   }, false);
