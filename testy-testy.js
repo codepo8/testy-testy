@@ -26,9 +26,6 @@
       case 40: // down
         setcurrent(down);
       break;
-      case 40: // down
-        setcurrent(down);
-      break;
       case 87: // w
         setcurrent(w);
       break;
@@ -66,6 +63,6 @@
     if (current) {
       current.className = 'reactors';
       }
-      current = null;
+    current = null;
   }
 })();
