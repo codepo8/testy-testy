@@ -2,68 +2,158 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-	<title>Makey Makey Test Page</title>
+	<title>Makey Makey Key remapper</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-	<link href='testy-testy.css' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		body {
+			font-family: 'open sans', helvetica, arial;
+			background: #222;
+		}
+		h1, p, ul {
+			margin: 0;
+			padding: 0
+			position: relative;
+		}
+		h1 {
+			text-transform: uppercase;
+			font-size: 24px;
+		}
+		header {
+			padding: 20px;
+			width: 600px;
+			margin: 0 auto;
+			display: block;
+			background: #ccc;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+		section {
+			padding: 20px;
+			height: 300px;
+			margin: 0 auto;
+			width: 600px;
+			display: block;
+			background: #ccc;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+		#presets li {
+			list-style: none;
+			opacity: 0;
+			width: 200px;
+			height: 150px;
+			border-radius: 5px;
+			border: 3px solid #999;
+			background: #eee;
+			padding-top: 50px;
+			text-align: center;
+			font-size: 30px;
+			position: absolute;
+			top: 150px;
+		}
+		#presets span {
+			width: 200px;
+			height: 150px;
+			padding-top: 50px;
+			border-radius: 5px;
+			border: 3px solid #999;
+			background: #eee;
+			text-align: center;
+			font-size: 30px;
+			position: absolute;
+			left: 300px;
+			top: 0;
+
+		}
+		#presets li.current {
+			opacity: 1;
+			top: 150px;
+		}
+		li::after {
+			content: 'MaKey MaKey preset';
+			position: absolute;
+			top: -30px;
+			left: 10px;
+			font-size: 14px;
+			text-align: left;
+		}
+		li span::after {
+			content: 'New setting';
+			position: absolute;
+			top: -30px;
+			left: 10px;
+			font-size: 14px;
+			text-align: left;
+		}
+
+	</style>
 </head>
 <body>
-	<!-- 
-		Following are the different sections to show and hide  
-		depending on which key is activated or which makey makey
-		circuit closed. Simply replace the text messages with
-		images. The sections are automatically centered.
-	-->
-	<section id="click" class="reactors">
-		<p>Click</p>		
-	</section>
+	<header>
+		<h1>Makey Makey key remapper</h1>
+		<p>Use <strong>left</strong> and <strong>right</strong> to pick the Makey Makey preset and <strong>up</strong> and <strong>down</strong> to choose the new one.</p>
+	</header>
+	<section>
+	<ul id="presets">
+		<li class="current">Left <span></span></li>
+		<li>Right <span></span></li>
+		<li>Top <span></span></li>
+		<li>Bottom <span></span></li>
+		<li>Space <span></span></li>
+		<li>Click <span></span></li>
+		<li>W <span></span></li>
+		<li>A <span></span></li>
+		<li>S <span></span></li>
+		<li>D <span></span></li>
+		<li>F <span></span></li>
+		<li>G <span></span></li>
+	  <li>Mouse Right <span></span></li>
+	  <li>Mouse Left <span></span></li>
+	  <li>Mouse Top <span></span></li>
+	  <li>Mouse Bottom <span></span></li>
+	  <li>Mouseclick Left <span></span></li>
+	  <li>Mouseclick Right <span></span></li>
+	</ul>
+</section>
+<script>
+(function(){
+  var body    = document,
+      current = 0,
+      tomap   = 0,
+      presets = document.querySelectorAll('#presets li'),
+      maps    = 'unchanged,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0,left,right,top,bottom, '.split(','),
+      mapped  = {};
 
-	<section id="right" class="reactors">
-		<p>Right</p>		
-	</section>
+  body.addEventListener('keydown', function(ev) {
+  	presets[current].className = '';
+    switch (ev.which) {
+      case 32: // space
 
-	<section id="left" class="reactors">
-		<p>Left</p>		
-	</section>
-
-	<section id="up" class="reactors">
-		<p>Up</p>		
-	</section>
-
-	<section id="down" class="reactors">
-		<p>Down</p>		
-	</section>
-
-	<section id="space" class="reactors">
-		<p>Space</p>		
-	</section>
-
-	<section id="w" class="reactors">
-		<p>w</p>		
-	</section> 
-
-	<section id="a" class="reactors">
-		<p>a</p>		
-	</section>
-
-	<section id="s" class="reactors">
-		<p>s</p>		
-	</section>
-
-	<section id="d" class="reactors">
-		<p>d</p>		
-	</section>
-
-	<section id="f" class="reactors">
-		<p>f</p>		
-	</section>
-
-	<section id="g" class="reactors">
-		<p>g</p>		
-	</section>
-
-<a class="topbar" href="https://github.com/codepo8/testy-testy/zipball/master">Download this to play with it!</a>
-<!-- ^ You can delete this now :) -->
-
-<script src="testy-testy.js"></script>
+      break;
+      case 39: // right
+      	current++;
+      break;
+      case 37: // left
+      	current--;
+      break;
+      case 38: // up
+      	tomap--;
+      break;
+      case 40: // down
+      	tomap++;
+      break;
+    }
+    if (current < 0) { current = presets.length - 1;}
+    if (current === presets.length) { current = 0;}
+    if (tomap < 0) { tomap = maps.length - 1;}
+    if (tomap === maps.length) { tomap = 0;}
+  	presets[current].className = 'current';
+  	presets[current].querySelector('span').innerHTML = maps[tomap];
+		//presets[current].querySelector('span').innerHTML = String.fromCharCode(ev.which);
+  }, false);
+  body.addEventListener('keyup', function(ev) {
+  }, false);
+})();
+</script>	
 </body>
 </html>
